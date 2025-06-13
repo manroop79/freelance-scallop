@@ -7,15 +7,68 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+ @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} 
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .lighting-beams {
+    position: relative;
+    overflow: hidden;
+    background-color: #1D2D3C;
+    height: 100vh;
+  }
+
+  .lighting-beams::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+      to-bottom, 
+      transparent, 
+      transparent 80px, 
+      rgba(255, 255, 255, 0.6) 80px,
+      rgba(255, 255, 255, 0.8) 82px
+      );
+    background-size: 10px 100px;
+    animation: dropBeams 3s linear infinite;
+    opacity: 0.7;
+  }
+
+  .lighting-beams::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255 , 255, 0.1),
+      transparent
+    );
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes dropBeams {
+    0% {
+      background-position: 0 -100%;
+    }
+    100% {
+      background-position: 0 100%;
+    }
+  }
 }
