@@ -56,7 +56,3 @@ This is a single-page application (SPA) built with [Next.js](https://nextjs.org/
 
 - Modify components in the `components/` directory to update UI.
 - Update Tailwind configuration in `tailwind.config.js` for custom styles.
-
-## License
-
-[MIT](LICENSE) 
